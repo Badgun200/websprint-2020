@@ -28,9 +28,11 @@ function notification_send($email, $subject, $message){
     $mail->AddAddress("$email");
 
     if($mail->send()){
-        return true;
+        header('Location: ../index.php?sent');
+        exit();
     }else{
-        return false;
+        header('Location: ../index.php?notsent');
+        exit();
     }
 }
 ?>
