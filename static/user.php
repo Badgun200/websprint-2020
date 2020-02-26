@@ -7,6 +7,7 @@
 </head>
 <body>
     <?php
+        include 'backend/choose_seminars.php';
     ?>
 </body>
 </html>

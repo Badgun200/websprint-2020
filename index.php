@@ -1,3 +1,9 @@
 <?php
-include("static/index.html");
+session_start();
+if(empty($_SESSION['email'])){
+    include("static/index.html");
+}
+else{
+    include("backend/choose_seminars.php");
+}
 ?>
