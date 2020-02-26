@@ -7,9 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" name="email" placeholder="Your email"></input>
-    <input type="password" name="password" placeholde="Your password"></input>
-    <input type="submit" name="login" value="Login"></input>
-    <input type="submit" name="signup" value="Sign up">
+    <form action="sign.php" method="post"></form>
+        <input type="text" name="email" placeholder="Your email"></input>
+        <input type="password" name="password" placeholde="Your password"></input>
+        <input type="submit" name="login" value="Login"></input>
+        <input type="submit" name="signup" value="Sign up">
+    </form>
 </body>
 </html>
