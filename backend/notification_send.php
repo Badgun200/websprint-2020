@@ -1,8 +1,8 @@
 <?php
 function notification_send($email, $subject, $message){
-    require 'phpmailer/PHPMailerAutoload.php';
-    require "phpmailer/class.phpmailer.php";
-    require "phpmailer/class.smtp.php";
+    require '../include/phpmailer/PHPMailerAutoload.php';
+    require "../include/phpmailer/class.phpmailer.php";
+    require "../include/phpmailer/class.smtp.php";
 
     $mail = new PHPMailer(); // create a new object
     $mail->SMTPAutoTLS = false;
