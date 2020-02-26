@@ -10,15 +10,18 @@ if($result === false){
 }
 
 while($row = mysqli_fetch_array($result)){
+    echo "loop1";
     $seminar_name = $row[0];
     $room_num = $row[1];
     $userids_csv = explode(",", $row[2]);
-    foreach($users_csv as $userid){
+    foreach($userids_csv as $userid){
+        echo "foreach";
         $userid = mysqli_escape_query($userid);
         $query2 = "SELECT email FROM Users WHERE id = '$userid';";
         $result2 = mysqli_query($connect, $query2);
         $email = null;
         while($row = mysqli_fetch_array($result2)){
+            echo "loop2";
             $email = $row[0];
         }
         $remaining_time_minutes = date("i",$row[3]-time());
