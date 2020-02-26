@@ -1,6 +1,10 @@
 <?php
     require "config/db.php";
-    echo '<form action="index.php?chosen=1" method="post">';
+    echo '<form action="choose_seminars.php?chosen=0" method="post">';
+    if($_SESSION["chosen"] == 1) {
+      //send data to db
+    }
+    else {
     $raw = mysqli_query($connect, "SELECT id, name, details, room, startTime, endTime FROM Seminars");
     $userd = mysqli_query($connect, "SELECT seminars FROM Users WHERE ID=".$_SESSION["id"]);
     $usersems = explode(",", $userd);
@@ -14,19 +18,27 @@
       array_push($endtimes, $row[1]);
       array_push($ids, $row[2]);
     }
+    $checked = $_POST["formSem"];
+
 
     while($row = mysqli_fetch_array($raw)) {
       $start = date("H:i", $row[4]);
       $end = date("H:i", $row[5]);
       $day = date("d. m. Y", $row[4]);
       echo '<input type="checkbox" name="formSem[]" value="'.$row[0];
+
+      if(!empty($checked)) {
       for($i = 0; $i < count($startimes); $i++) {
         if(($startimes[$i] > $start && $startimes[$i] < $end) ||
-         ($endtimes[$i] > $start && $endtimes[$i] < $end) && $ids[$i] != $row[0]) {
+         ($endtimes[$i] > $start && $endtimes[$i] < $end) && $ids[$i] != $row[0]
+          && in_array($ids[$i], $checked)) {
            echo '<div class="error">Daná akce se kryje s jinou. Upravte svůj výběr.</div>';
            break;
          }
+         $_SESSION["chosen"] = 1;
       }
+    }
+
       if(in_array($row[0], $usersems)) {
           echo 'checked';
       }
@@ -35,4 +47,5 @@
     }
 
     echo '<input type="submit" name="formSubmit" value="Potvrdit"></form>';
+  }
  ?>
