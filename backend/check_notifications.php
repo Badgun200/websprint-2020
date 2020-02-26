@@ -20,8 +20,6 @@ while($row = mysqli_fetch_array($result)){
         while($row2 = mysqli_fetch_array($result2)){
             $email = $row2[0];
         }
-        echo $row[3]."<br>";
-        echo time()."<br>";
         $remaining_time_minutes = round(($row[3]-time())/60);
         $subject = "$seminar_name starts in $remaining_time_minutes minutes!";
         $message = "Hey,\n$seminar_name starts soon in room no. $room_num!";
