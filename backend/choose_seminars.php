@@ -13,8 +13,8 @@
       mysqli_query($connect, "UPDATE Users SET Seminars=".$str);
     }}
     else {
-    $raw = mysqli_query($connect, "SELECT id, name, details, room, startTime, endTime FROM Seminars");
-    $userd = mysqli_query($connect, "SELECT seminars FROM Users WHERE ID=".$_SESSION["id"]);
+    $raw = mysqli_query($connect, "SELECT * FROM Seminars");
+    $userd = mysqli_query($connect, "SELECT seminars FROM Users WHERE email=".$_SESSION["email"]);
     $usersems = explode(",", $userd);
     $startimes = array();
     $endtimes = array();
