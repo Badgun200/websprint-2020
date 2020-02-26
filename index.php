@@ -9,6 +9,7 @@
 <body>
     <input type="text" name="email" placeholder="Your email"></input>
     <input type="password" name="password" placeholde="Your password"></input>
-    <input type="submit" name="submit" value="Login"></input>
+    <input type="submit" name="login" value="Login"></input>
+    <input type="submit" name="signup" value="Sign up">
 </body>
 </html>
