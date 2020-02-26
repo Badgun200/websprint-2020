@@ -23,8 +23,8 @@ while($row = mysqli_fetch_array($result)){
             echo "loop2";
             $email = $row[0];
         }
-        $remaining_time_minutes = date("i",$row[3]-time());
-        $subject = "$seminar_name starts in $remaining_time_minutes!";
+        $remaining_time_minutes = round(($row[3]-time())/60);
+        $subject = "$seminar_name starts in $remaining_time_minutes minutes!";
         $message = "Hey,\n$seminar_name starts soon in room no. $room_num!";
         if(notification_send($email, $subject, $message)){
             echo "OK for $email";
