@@ -1,6 +1,6 @@
 <?php
     require "config/db.php";
-    echo '<form action="choose_seminars.php?chosen=0" method="post">';
+    echo '<form action="choose_seminars.php" method="post">';
     if($_SESSION["chosen"] == 1) {
       //send data to db
       $checked = $_POST["formSem"];
