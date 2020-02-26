@@ -3,6 +3,12 @@
     echo '<form action="choose_seminars.php?chosen=0" method="post">';
     if($_SESSION["chosen"] == 1) {
       //send data to db
+      $checked = $_POST["formSem"];
+      $str = "";
+      foreach($checked as &$check) {
+        $str += $check.",";
+      }
+
     }
     else {
     $raw = mysqli_query($connect, "SELECT id, name, details, room, startTime, endTime FROM Seminars");
