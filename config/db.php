@@ -1,10 +1,10 @@
 <?php
     require 'constants.php';
     
-    $con = new mysqli($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME) or die("Nelze se připojit k databázi");
+    $connect = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB_NAME);
     
-    if($con->connect_error){
-        die('Database error:' .$con->connect_error);
+    if(!$connect){
+        die("Nelze se připojit k databázi");
     }
      
 ?>
