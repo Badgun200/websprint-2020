@@ -1,6 +1,7 @@
 <?php
     require "config/db.php";
     echo '<form action="choose_seminars.php" method="post">';
+    if(isset($_SESSION["chosen"])) {
     if($_SESSION["chosen"] == 1) {
       //send data to db
       $checked = $_POST["formSem"];
@@ -9,7 +10,7 @@
         $str += $check.",";
       }
 
-    }
+    }}
     else {
     $raw = mysqli_query($connect, "SELECT * FROM Seminars");
     $userd = mysqli_query($connect, "SELECT seminars FROM Users WHERE email=".$_SESSION["email"]);
