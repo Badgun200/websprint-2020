@@ -5,8 +5,6 @@ if(empty($_SESSION['email'])){
 }
 else{
     require "backend/choose_seminars.php";
-    require 'static/logout.html';
-    require 'backend/notification_send.php';
-    echo notification_send("kvaky.kratschmer@gmail.com","subject","text");    
+    require 'static/logout.html'; 
 }
 ?>
