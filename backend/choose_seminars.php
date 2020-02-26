@@ -20,11 +20,10 @@
     $ids = array();
     foreach ($usersems as &$sem) {
       $curr = mysqli_query($connect, "SELECT startTime, endTime, id FROM Seminars WHERE id=".$sem);
-      if($row = mysqli_fetch_assoc($curr)){
-        array_push($startimes, $row[0]);
-        array_push($endtimes, $row[1]);
-        array_push($ids, $row[2]);
-      }
+      if($row = mysqli_fetch_row($curr)){
+      array_push($startimes, $row[0]);
+      array_push($endtimes, $row[1]);
+      array_push($ids, $row[2]);
     }
     if(isset($_POST["formSem"])) $checked = $_POST["formSem"];
     else $checked = "";
