@@ -12,7 +12,7 @@
     $endtimes = array();
     $ids = array();
     foreach ($usersems as &$sem) {
-      $curr = mysqli_query($con, "SELECT startTime, endTime, id FROM Seminars WHERE id=".$sem);
+      $curr = mysqli_query($connect, "SELECT startTime, endTime, id FROM Seminars WHERE id=".$sem);
       $row = mysqli_fetch_row($curr);
       array_push($startimes, $row[0]);
       array_push($endtimes, $row[1]);
