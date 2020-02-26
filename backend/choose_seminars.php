@@ -1,6 +1,7 @@
 <?php
     require "config/db.php";
-    echo '<form action="choose_seminars.php?chosen=0" method="post">';
+    echo '<form action="choose_seminars.php" method="post">';
+    if(isset($_SESSION["chosen"])) {
     if($_SESSION["chosen"] == 1) {
       //send data to db
       $checked = $_POST["formSem"];
@@ -8,8 +9,9 @@
       foreach($checked as &$check) {
         $str += $check.",";
       }
-
-    }
+      $str = substr($str, 0, -1);
+      mysqli_query($connect, "UPDATE Users SET Seminars=".$str);
+    }}
     else {
     $raw = mysqli_query($connect, "SELECT id, name, details, room, startTime, endTime FROM Seminars");
     $userd = mysqli_query($connect, "SELECT seminars FROM Users WHERE ID=".$_SESSION["id"]);
