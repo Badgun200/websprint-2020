@@ -16,7 +16,6 @@ while($row = mysqli_fetch_array($result)){
     $userids_csv = explode(",", $row[2]);
     foreach($userids_csv as $userid){
         echo "foreach";
-        $userid = mysqli_escape_query($userid);
         $query2 = "SELECT email FROM Users WHERE id = '$userid';";
         $result2 = mysqli_query($connect, $query2);
         $email = null;
