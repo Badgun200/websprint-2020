@@ -17,8 +17,8 @@ while($row = mysqli_fetch_array($result)){
         $query2 = "SELECT email FROM Users WHERE id = '$userid';";
         $result2 = mysqli_query($connect, $query2);
         $email = null;
-        while($row = mysqli_fetch_array($result2)){
-            $email = $row[0];
+        while($row2 = mysqli_fetch_array($result2)){
+            $email = $row2[0];
         }
         echo $row[3]."<br>";
         echo time()."<br>";
