@@ -1,9 +1,9 @@
 <?php
-function notification_send($email, $subject, $message){
-    require '../include/phpmailer/PHPMailerAutoload.php';
-    require "../include/phpmailer/class.phpmailer.php";
-    require "../include/phpmailer/class.smtp.php";
+require_once('../include/phpmailer/PHPMailerAutoload.php');
+require_once("../include/phpmailer/class.phpmailer.php");
+require_once("../include/phpmailer/class.smtp.php");
 
+function notification_send($email, $subject, $message){
     $mail = new PHPMailer(); // create a new object
     $mail->SMTPAutoTLS = false;
     $mail->IsSMTP(); // enable SMTP
