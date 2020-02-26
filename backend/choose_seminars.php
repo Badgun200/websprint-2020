@@ -32,7 +32,7 @@
       $start = date("H:i", $row[4]);
       $end = date("H:i", $row[5]);
       $day = date("d. m. Y", $row[4]);
-      echo '<input type="checkbox" name="formSem[]" value="'.$row[0];
+
 
       if(!empty($checked)) {
       for($i = 0; $i < count($startimes); $i++) {
@@ -46,8 +46,9 @@
       }
     }
 
+      echo '<input type="checkbox" name="formSem[]" value="'.$row[0];
       if(in_array($row[0], $usersems)) {
-          echo 'checked';
+          echo ' checked';
       }
       echo '><div class="sname">'.$row[1].'</div><div class="sdet">'.$row[2].'</div><div class="sroom">'.$row[3]
             .'</div><div class="sdate>"'.$start.' - '.$end.'  '.$day.'</div>';
