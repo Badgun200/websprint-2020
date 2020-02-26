@@ -2,8 +2,8 @@
 include("../config/db.php");
 include("notification_send.php");
 
-$time = time()+10*60;
-$query = "SELECT name, room, users, startTime FROM Seminars WHERE startTime <= '$time';";
+$time = time();
+$query = "SELECT name, room, users, startTime FROM Seminars WHERE $time <= startTime AND startTime-$time <= 10*60;";
 $result = mysqli_query($connect, $query);
 if($result === false){
     die("Database error");
