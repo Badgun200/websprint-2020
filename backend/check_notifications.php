@@ -9,11 +9,6 @@ if($result === false){
     die("Database error");
 }
 
-if(notification_send("temp.xanomes@volny.cz", "test", "msg")){
-    echo "OK";
-}else{
-    echo "ERR";
-}
 while($row = mysqli_fetch_array($result)){
     $seminar_name = $row[0];
     $room_num = $row[1];
@@ -29,6 +24,11 @@ while($row = mysqli_fetch_array($result)){
         $remaining_time_minutes = date("i",$row[3]-time());
         $subject = "$seminar_name starts in $remaining_time_minutes!";
         $message = "Hey,\n$seminar_name starts soon in room no. $room_num!";
+        if(notification_send($email, $subject, $message)){
+            echo "OK for $email";
+        }else{
+            echo "ERROR for $email";
+        }
     }
 }
 ?>
