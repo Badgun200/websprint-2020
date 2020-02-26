@@ -3,8 +3,12 @@ session_start();
 if(empty($_SESSION['email'])){
     include("static/index.html");
 }
-else{
+
+elseif($_SESSION['role'] === "admin"){
+    require("backend/admin_interface.php");
+    require("static/logout.html");
+}else{
     require "backend/view_seminars.php";
-    require 'static/logout.html';
+    require 'static/logout.html'; 
 }
 ?>
