@@ -47,7 +47,7 @@
       }
     }
 
-      echo '<input type="checkbox" name="formSem[]" value="'.$row[0];
+      echo '<input type="checkbox" name="formSem[]" value="'.$row[0].'"';
       if(in_array($row[0], $usersems)) {
           echo ' checked';
       }
