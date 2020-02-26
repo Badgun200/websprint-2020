@@ -22,17 +22,14 @@ function notification_send($email, $subject, $message){
     $mail->DKIM_selector = "quaky.cz";
 
     // Content
-    $mail->
     $mail->Subject = $subject;
     $mail->Body    = $message;
     $mail->AddAddress("$email");
 
     if($mail->send()){
-        header('Location: ../index.php?sent');
-        exit();
+        header("HTTP/1.1 204");
     }else{
-        header('Location: ../index.php?notsent');
-        exit();
+        header("HTTP/1.1 400");
     }
 }
 ?>
