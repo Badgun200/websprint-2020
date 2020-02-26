@@ -1,16 +1,18 @@
 <?php
     require "config/db.php";
-    echo '<form action="choose_seminars.php" method="post">';
+    echo '<form action="index.php" method="post">';
     if(isset($_SESSION["chosen"])) {
-    if($_SESSION["chosen"] == 1) {
-      //send data to db
-      $checked = $_POST["formSem"];
-      $str = "";
-      foreach($checked as &$check) {
-        $str += $check.",";
+      if($_SESSION["chosen"] == 1) {
+        //send data to db
+        $checked = $_POST["formSem"];
+        $str = "";
+        foreach($checked as &$check) {
+          $str += $check.",";
+        }
+        $str = substr($str,0,-1);
+        mysqli_query($connect, "UPDATE Users SET seminars=".$str);
       }
-
-    }}
+    }
     else {
     $raw = mysqli_query($connect, "SELECT * FROM Seminars");
     $userd = mysqli_query($connect, "SELECT seminars FROM Users WHERE email=".$_SESSION["email"]);
@@ -49,7 +51,7 @@
 
       echo '<input type="checkbox" name="formSem[]" value="'.$row[0].'"';
       if(in_array($row[0], $usersems)) {
-          echo ' checked';
+          echo ' checked=""';
       }
       echo '><div class="sname">'.$row[1].'</div><div class="sdet">'.$row[2].'</div><div class="sroom">'.$row[3]
             .'</div><div class="sdate>"'.$start.' - '.$end.'  '.$day.'</div>';

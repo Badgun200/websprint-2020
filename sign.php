@@ -24,6 +24,7 @@ if(isset($_POST['login'])||isset($_POST['signup'])){
                     $pwdCheck = password_verify($password, $row['password']);
                     if($pwdCheck == true){
                         session_start();
+                        $_SESSIOS['uId'] = $row['id'];
                         $_SESSION['email'] = $row['email'];
                         $_SESSION['role'] = $row['role'];
                         $_SESSION['seminars'] = $row['seminars'];
