@@ -22,7 +22,6 @@ function notification_send($email, $subject, $message){
     $mail->DKIM_selector = "quaky.cz";
 
     // Content
-    $mail->
     $mail->Subject = $subject;
     $mail->Body    = $message;
     $mail->AddAddress("$email");

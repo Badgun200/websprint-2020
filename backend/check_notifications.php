@@ -25,9 +25,9 @@ while($row = mysqli_fetch_array($result)){
         $subject = "$seminar_name starts in $remaining_time_minutes!";
         $message = "Hey,\n$seminar_name starts soon in room no. $room_num!";
         if(notification_send($email, $subject, $message)){
-            echo "OK";
+            echo "OK for $email";
         }else{
-            echo "Error";
+            echo "ERROR for $email";
         }
     }
 }
