@@ -26,8 +26,8 @@
       array_push($endtimes, $row[1]);
       array_push($ids, $row[2]);
     }
-    $checked = $_POST["formSem"];
-
+    if(isset($_POST["formSem"])) $checked = $_POST["formSem"];
+    else $checked = "";
 
     while($row = mysqli_fetch_array($raw)) {
       $start = date("H:i", $row[4]);
