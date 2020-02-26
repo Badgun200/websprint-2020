@@ -27,9 +27,9 @@ function notification_send($email, $subject, $message){
     $mail->AddAddress("$email");
 
     if($mail->send()){
-        header("HTTP/1.1 204");
+        return true;
     }else{
-        header("HTTP/1.1 400");
+        return false;
     }
 }
 ?>
